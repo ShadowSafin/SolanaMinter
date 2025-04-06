@@ -4,11 +4,13 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import "./index.css";
-import { SpeedInsights } from "@vercel/speed-insights/react"; // <-- Add this import
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <SpeedInsights /> {/* <-- Add this line */}
+    <SpeedInsights />
+    <Analytics />
     <BrowserRouter>
       <App />
     </BrowserRouter>
