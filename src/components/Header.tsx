@@ -5,61 +5,38 @@ import { NetworkSelector } from "./NetworkSelector";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
+import { Link } from "react-router-dom";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <a href="/" className="flex items-center gap-2 font-bold text-xl">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-solana to-solana-dark flex items-center justify-center text-white">
-              S
-            </div>
-            <span className="hidden md:block animate-fade-in">SolanaMinter</span>
-          </a>
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 max-w-screen-2xl items-center">
+        <div className="mr-4 hidden md:flex">
+          <Link to="/" className="mr-6 flex items-center space-x-2">
+            <img src="/solana.png" alt="Solana Logo" className="h-6 w-6" />
+            <span className="hidden font-bold sm:inline-block">
+              SolanaMinter
+            </span>
+          </Link>
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+            <Link
+              to="/"
+              className="transition-colors hover:text-foreground/80 text-foreground"
+            >
+              Home
+            </Link>
+          </nav>
         </div>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-6">
-          <a href="#features" className="text-muted-foreground hover:text-foreground transition-colors">
-            Features
-          </a>
-          <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">
-            How It Works
-          </a>
-          <a href="#pricing" className="text-muted-foreground hover:text-foreground transition-colors">
-            Pricing
-          </a>
-          <a href="#faq" className="text-muted-foreground hover:text-foreground transition-colors">
-            FAQ
-          </a>
-        </nav>
-
-        <div className="flex items-center gap-4">
-          <ThemeToggle />
-          <NetworkSelector />
-          <WalletConnect />
-          
-          <Button 
-            variant="default" 
-            size="sm" 
-            className="hidden md:flex items-center gap-1 bg-gradient-to-r from-solana to-solana-dark hover:opacity-90 transition-opacity"
-            onClick={() => window.location.href = "#create-coin"}
-          >
-            Start Creating <ChevronRight className="h-4 w-4" />
-          </Button>
-          
-          {/* Mobile menu button */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <div className="w-full flex-1 md:w-auto md:flex-none">
+            <NetworkSelector />
+          </div>
+          <nav className="flex items-center">
+            <WalletConnect />
+            <ThemeToggle />
+          </nav>
         </div>
       </div>
 
