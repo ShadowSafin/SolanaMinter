@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { WalletConnect } from "./WalletConnect";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "./theme-toggle";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,6 +37,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
+          <ThemeToggle />
           <WalletConnect />
           
           <Button 
@@ -96,6 +97,10 @@ export function Header() {
           >
             FAQ
           </a>
+          <div className="flex items-center gap-4 py-4 border-t border-border">
+            <ThemeToggle />
+            <span className="text-sm text-muted-foreground">Toggle theme</span>
+          </div>
           <Button 
             variant="default" 
             className="mt-4 bg-gradient-to-r from-solana to-solana-dark hover:opacity-90 transition-opacity"

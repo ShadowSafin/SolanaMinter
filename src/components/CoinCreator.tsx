@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CircleDollarSign, Info, Loader2, LockIcon, Coins, Globe, ChevronRight, Check, Image as ImageIcon, Trash2 } from "lucide-react";
+import { CircleDollarSign, Info, Loader2, LockIcon, Coins, Globe, ChevronRight, Check, Image as ImageIcon, Trash2, ArrowRightIcon, Wallet } from "lucide-react";
 import { toast } from "@/utils/toast";
 import { calculateTotalFee, createCoin } from "@/utils/solana";
 import { FEES, OWNER_WALLET_ADDRESS, SocialPlatform, type CoinCreationParams } from "@/lib/constants";
@@ -335,7 +334,7 @@ export function CoinCreator() {
 
   return (
     <div className="w-full max-w-4xl mx-auto" id="create-coin">
-      <Card className="bg-white/80 backdrop-blur-md">
+      <Card className="bg-card text-card-foreground">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Coins className="h-6 w-6 text-solana" />

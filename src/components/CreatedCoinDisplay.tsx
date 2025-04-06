@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -56,8 +55,8 @@ export function CreatedCoinDisplay({
     <Dialog open={visible} onOpenChange={(open) => !open && onClose()}>
       <DialogContent className="sm:max-w-md">
         <DialogHeader className="text-center">
-          <div className="mx-auto bg-green-100 rounded-full w-12 h-12 flex items-center justify-center mb-2">
-            <CheckCircle className="h-6 w-6 text-green-600" />
+          <div className="mx-auto bg-green-100 dark:bg-green-900 rounded-full w-12 h-12 flex items-center justify-center mb-2">
+            <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
           </div>
           <DialogTitle className="text-xl">Coin Created Successfully!</DialogTitle>
           <DialogDescription>
@@ -74,7 +73,7 @@ export function CreatedCoinDisplay({
             </div>
           )}
 
-          <div className="bg-muted/50 p-4 rounded-lg space-y-3">
+          <div className="bg-muted p-4 rounded-lg space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-sm font-medium">Token Name:</span>
               <span className="text-sm">{name}</span>
@@ -107,19 +106,19 @@ export function CreatedCoinDisplay({
                   className="h-7 w-7" 
                   onClick={() => copyToClipboard(mintAddress, "Token address")}
                 >
-                  {copied === "Token address" ? <CheckCircle className="h-3.5 w-3.5 text-green-600" /> : <Copy className="h-3.5 w-3.5" />}
+                  {copied === "Token address" ? <CheckCircle className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> : <Copy className="h-3.5 w-3.5" />}
                 </Button>
                 <a
                   href={getExplorerUrl(mintAddress, 'address')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-blue-600 hover:underline flex items-center"
+                  className="text-xs text-primary hover:text-primary/90 flex items-center"
                 >
                   View <ExternalLink className="h-3 w-3 ml-1" />
                 </a>
               </div>
             </div>
-            <div className="bg-muted/50 p-2 rounded">
+            <div className="bg-muted p-2 rounded">
               <code className="text-xs break-all">{mintAddress}</code>
             </div>
           </div>
@@ -134,19 +133,19 @@ export function CreatedCoinDisplay({
                   className="h-7 w-7" 
                   onClick={() => copyToClipboard(transactionId, "Transaction ID")}
                 >
-                  {copied === "Transaction ID" ? <CheckCircle className="h-3.5 w-3.5 text-green-600" /> : <Copy className="h-3.5 w-3.5" />}
+                  {copied === "Transaction ID" ? <CheckCircle className="h-3.5 w-3.5 text-green-600 dark:text-green-400" /> : <Copy className="h-3.5 w-3.5" />}
                 </Button>
                 <a
                   href={getExplorerUrl(transactionId, 'tx')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-xs text-blue-600 hover:underline flex items-center"
+                  className="text-xs text-primary hover:text-primary/90 flex items-center"
                 >
                   View <ExternalLink className="h-3 w-3 ml-1" />
                 </a>
               </div>
             </div>
-            <div className="bg-muted/50 p-2 rounded">
+            <div className="bg-muted p-2 rounded">
               <code className="text-xs break-all">{transactionId}</code>
             </div>
           </div>

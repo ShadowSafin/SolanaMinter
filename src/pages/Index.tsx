@@ -155,7 +155,7 @@ export default function Index() {
             </div>
             
             <div className="max-w-3xl mx-auto">
-              <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-border/50">
+              <div className="bg-card text-card-foreground rounded-2xl overflow-hidden shadow-lg border border-border/50">
                 <div className="bg-gradient-to-r from-solana/10 to-blue-500/10 px-6 py-4 border-b border-border/50">
                   <h3 className="font-bold text-lg">Memecoin Creation Fees</h3>
                 </div>
@@ -220,35 +220,35 @@ export default function Index() {
             </div>
             
             <div className="max-w-3xl mx-auto space-y-6">
-              <div className="bg-white rounded-lg p-6 border border-border/50">
+              <div className="bg-card text-card-foreground rounded-lg p-6 border border-border/50">
                 <h3 className="font-medium mb-2">What is a memecoin?</h3>
                 <p className="text-muted-foreground">
                   A memecoin is a cryptocurrency created around an internet meme, joke, or community concept. Unlike utility tokens, memecoins often focus on community engagement and viral growth.
                 </p>
               </div>
               
-              <div className="bg-white rounded-lg p-6 border border-border/50">
+              <div className="bg-card text-card-foreground rounded-lg p-6 border border-border/50">
                 <h3 className="font-medium mb-2">Why should I revoke authorities?</h3>
                 <p className="text-muted-foreground">
                   Revoking authorities (mint, update, freeze) increases trust in your token by removing the ability for anyone to manipulate the token after creation. This is often viewed favorably by the community.
                 </p>
               </div>
               
-              <div className="bg-white rounded-lg p-6 border border-border/50">
+              <div className="bg-card text-card-foreground rounded-lg p-6 border border-border/50">
                 <h3 className="font-medium mb-2">What wallet can I use?</h3>
                 <p className="text-muted-foreground">
                   SolanaMinter supports popular Solana wallets like Phantom, Solflare, and others that connect via the Solana wallet adapter.
                 </p>
               </div>
               
-              <div className="bg-white rounded-lg p-6 border border-border/50">
+              <div className="bg-card text-card-foreground rounded-lg p-6 border border-border/50">
                 <h3 className="font-medium mb-2">How long does token creation take?</h3>
                 <p className="text-muted-foreground">
                   Token creation happens almost instantly after confirmation of the transaction. You'll receive the token address immediately after the transaction is confirmed on the Solana blockchain.
                 </p>
               </div>
               
-              <div className="bg-white rounded-lg p-6 border border-border/50">
+              <div className="bg-card text-card-foreground rounded-lg p-6 border border-border/50">
                 <h3 className="font-medium mb-2">Can I edit my token after creation?</h3>
                 <p className="text-muted-foreground">
                   If you don't revoke the update authority, you can modify certain metadata after creation. However, once authorities are revoked, those aspects cannot be changed.
@@ -259,7 +259,7 @@ export default function Index() {
         </section>
         
         {/* Create Coin Section */}
-        <section className="py-20 bg-gradient-to-b from-white to-muted/30">
+        <section className="py-20 bg-gradient-to-b from-background to-muted/30">
           <div className="container">
             <div className="max-w-2xl mx-auto text-center mb-16">
               <h2 className="text-3xl font-bold mb-4">Create Your Memecoin</h2>
@@ -273,7 +273,7 @@ export default function Index() {
         </section>
         
         {/* CTA Section */}
-        <section className="py-16 bg-gradient-to-r from-solana/10 to-blue-500/10">
+        <section className="py-16 bg-gradient-to-r from-muted/30 to-muted/50">
           <div className="container">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl font-bold mb-4">Ready to Launch Your Memecoin?</h2>
