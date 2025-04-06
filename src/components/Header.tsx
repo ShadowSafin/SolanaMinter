@@ -14,9 +14,11 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <a href="/" className="flex items-center gap-2 font-bold text-xl">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-solana to-solana-dark flex items-center justify-center text-white">
-              S
-            </div>
+            <img 
+              src="/logo.png" 
+              alt="SolanaMinter Logo" 
+              className="w-8 h-8 rounded-full object-cover"
+            />
             <span className="hidden md:block animate-fade-in">SolanaMinter</span>
           </a>
         </div>
