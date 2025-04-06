@@ -24,7 +24,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["vite/client", "node"]
   },
-  "include": ["src"]
+  "include": ["src", "src/types.d.ts"],
+  "files": ["src/types.d.ts"]
 }

@@ -1,8 +1,31 @@
-
 import { Buffer } from 'buffer';
 
-// Fix for Buffer not being available in browser
-window.Buffer = window.Buffer || Buffer;
+declare global {
+  interface Window {
+    Buffer: typeof Buffer;
+    process: any;
+    exports: any;
+    module: any;
+  }
+}
+
+if (typeof window !== 'undefined') {
+  // Ensure Buffer is available globally
+  window.Buffer = window.Buffer || Buffer;
+
+  // Ensure process is available
+  if (typeof window.process === 'undefined') {
+    window.process = { env: {} };
+  }
+
+  // Ensure exports and module are available
+  if (typeof window.exports === 'undefined') {
+    window.exports = {};
+  }
+  if (typeof window.module === 'undefined') {
+    window.module = { exports: window.exports };
+  }
+}
 
 // Fix for process not being available in browser
 // Use a proper typing to avoid TypeScript errors
@@ -106,3 +129,5 @@ if (!(window as any).os) {
     cpus: () => []
   };
 }
+
+export {};

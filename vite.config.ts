@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import polyfillNode from "rollup-plugin-polyfill-node";
+import svgr from "vite-plugin-svgr";
 
 export default defineConfig(({ mode }) => ({
   base: "/",
@@ -12,6 +13,7 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
+    svgr(),
     mode === "development" && componentTagger(),
     polyfillNode({
       include: [
@@ -79,14 +81,13 @@ export default defineConfig(({ mode }) => ({
       external: ['fsevents'],
       output: {
         format: 'es',
-        intro: 'var global = globalThis; var exports = {};'
+        intro: 'var global = globalThis; var exports = {}; var module = { exports: exports };'
       }
     }
   },
   define: {
     'process.env': {},
     'process.browser': true,
-    global: 'globalThis',
-    'global.crypto': 'crypto'
+    global: 'globalThis'
   }
 }));

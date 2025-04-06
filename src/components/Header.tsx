@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { WalletConnect } from "./WalletConnect";
+import { NetworkSelector } from "./NetworkSelector";
 import { ChevronRight, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
@@ -38,6 +39,7 @@ export function Header() {
 
         <div className="flex items-center gap-4">
           <ThemeToggle />
+          <NetworkSelector />
           <WalletConnect />
           
           <Button 
