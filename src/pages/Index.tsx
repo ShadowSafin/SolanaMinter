@@ -14,38 +14,73 @@ export default function Index() {
       
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="py-20 md:py-32 container relative overflow-hidden">
-          <div className="absolute -top-48 -right-48 w-96 h-96 bg-solana/20 rounded-full blur-3xl"></div>
-          <div className="absolute -bottom-48 -left-48 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background via-background/95 to-muted/30 border-b border-border/50">
+          {/* Enhanced gradient orbs */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="gradient-orb primary absolute -top-48 -right-48 w-[500px] h-[500px] animate-float delay-300"></div>
+            <div className="gradient-orb secondary absolute -bottom-48 -left-48 w-[500px] h-[500px] animate-float delay-1000"></div>
+            <div className="gradient-orb primary absolute top-1/4 left-1/3 w-[300px] h-[300px] animate-float delay-500"></div>
+          </div>
+
+          {/* Gradient border effect */}
+          <div className="absolute inset-0 bg-gradient-to-b from-border/5 via-border/2 to-border/5 pointer-events-none animate-shimmer"></div>
           
-          <div className="max-w-3xl mx-auto text-center relative">
-            <div className="inline-block px-3 py-1 bg-muted/80 rounded-full text-xs font-medium mb-6 animate-fade-in">
-              Powered by Solana
+          <div className="container py-20 md:py-32 relative">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className="inline-block px-4 py-2 bg-card/50 backdrop-blur-sm rounded-full text-sm font-medium mb-8 animate-scale-in shadow-lg border border-border/40">
+                🚀 <span className="animate-gradient-text">Powered by Solana</span>
+              </div>
+              
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8 animate-scale-in delay-200">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-solana via-purple-500 to-blue-500 animate-gradient-text">
+                  Launch Your Memecoin <br className="hidden md:block" />
+                  in Minutes
+                </span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-muted-foreground mb-10 animate-slide-in-right delay-300 leading-relaxed">
+                Create, customize, and launch your own Solana memecoin with just a few clicks. 
+                No coding required, fair pricing, instant deployment.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-6 justify-center animate-scale-in delay-400">
+                <Button 
+                  size="lg" 
+                  className="relative overflow-hidden group bg-gradient-to-r from-solana to-solana-dark hover:opacity-100 transition-all duration-300 rounded-full text-lg px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1"
+                  onClick={() => {
+                    const element = document.getElementById('create-coin');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  <span className="relative z-10 flex items-center justify-center">
+                    Create Your Coin <ArrowRightIcon className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-solana via-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="relative overflow-hidden rounded-full text-lg px-8 py-6 hover:bg-card/50 transition-all duration-300 backdrop-blur-sm border-border/40 hover:border-border group"
+                  onClick={() => {
+                    const element = document.getElementById('features');
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
+                >
+                  <span className="relative z-10">Learn More</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-border/10 to-border/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Button>
+              </div>
             </div>
-            
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 animate-slide-down">
-              Launch Your Memecoin <br className="hidden md:block" />
-              <span className="bg-gradient-to-r from-solana to-blue-500 text-transparent bg-clip-text">
-                in Minutes
-              </span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-slide-down animation-delay-100">
-              Create, customize, and launch your own Solana memecoin with just a few clicks. 
-              No coding required, fair pricing, instant deployment.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up animation-delay-200">
-              <Button 
-                size="lg" 
-                className="bg-gradient-to-r from-solana to-solana-dark hover:opacity-90 transition-opacity rounded-full"
-                onClick={() => window.location.href = "#create-coin"}
-              >
-                Create Your Coin <ArrowRightIcon className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="rounded-full" onClick={() => window.location.href = "#features"}>
-                Learn More
-              </Button>
+          </div>
+
+          {/* Enhanced scroll indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-float">
+            <div className="w-6 h-10 rounded-full border-2 border-muted-foreground/20 flex items-center justify-center animate-glow">
+              <div className="w-1 h-2 bg-muted-foreground/20 rounded-full animate-float delay-100"></div>
             </div>
           </div>
         </section>
@@ -57,34 +92,36 @@ export default function Index() {
           </div>
         </section>
         
-        {/* Features Section */}
-        <section id="features" className="py-20 bg-muted/30">
+        {/* Features Section with enhanced animations */}
+        <section id="features" className="py-24 bg-gradient-to-b from-muted/30 via-transparent to-transparent">
           <div className="container">
-            <div className="max-w-2xl mx-auto text-center mb-16">
-              <h2 className="text-3xl font-bold mb-4">Why Choose SolanaMinter</h2>
-              <p className="text-muted-foreground">
+            <div className="max-w-2xl mx-auto text-center mb-20">
+              <h2 className="text-4xl font-bold mb-6 animate-gradient-text">
+                Why Choose SolanaMinter
+              </h2>
+              <p className="text-xl text-muted-foreground animate-slide-in-right delay-200">
                 A seamless experience from concept to launch, with all the features you need to create a successful memecoin.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
               <FeatureCard 
                 icon={Coins}
                 title="Simple Creation"
                 description="Create your token in minutes with a user-friendly interface. No coding knowledge required."
-                className="animate-fade-in"
+                className="hover-card animate-scale-in delay-300"
               />
               <FeatureCard 
                 icon={LockIcon}
                 title="Security Options"
                 description="Optionally revoke mint, update, and freeze authorities for increased community trust."
-                className="animate-fade-in animation-delay-100"
+                className="hover-card animate-scale-in delay-400"
               />
               <FeatureCard 
                 icon={PackageOpen}
                 title="Customizable"
                 description="Set your token supply, decimals, and add social media links to boost your project's visibility."
-                className="animate-fade-in animation-delay-200"
+                className="hover-card animate-scale-in delay-500"
               />
             </div>
           </div>

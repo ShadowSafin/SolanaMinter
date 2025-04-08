@@ -45,6 +45,87 @@
     </script>
 
     <style>
+      /* Initial page state */
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: hsl(var(--background));
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: system-ui, -apple-system, sans-serif;
+        scroll-behavior: smooth;
+        opacity: 0;
+        animation: fadeIn 0.3s ease-out forwards;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      #root {
+        position: fixed;
+        inset: 0;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: 0.2s;
+        background: linear-gradient(
+          135deg,
+          hsl(var(--background)),
+          hsl(var(--background))
+        );
+        min-height: 100vh;
+        backdrop-filter: blur(100px);
+      }
+
+      /* Enhanced Loading animation */
+      .loading {
+        position: fixed;
+        inset: 0;
+        background: hsl(var(--background));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .loading.fade-out {
+        animation: fadeOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .loader {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        position: relative;
+        background: conic-gradient(from 0deg, transparent 0%, #9945FF 100%);
+        mask: radial-gradient(circle at center, transparent 55%, white 55%);
+        -webkit-mask: radial-gradient(circle at center, transparent 55%, white 55%);
+        animation: rotate 1s linear infinite;
+      }
+
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+          transform: scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: scale(1.1);
+          visibility: hidden;
+        }
+      }
+
       /* Performance optimizations */
       * {
         box-sizing: border-box;
@@ -52,22 +133,24 @@
         padding: 0;
       }
 
-      body {
-        font-family: Arial, sans-serif;
-        overflow-x: hidden;
-      }
-
       #root {
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeInUp 0.6s ease-out forwards;
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        background: linear-gradient(
+          135deg,
+          hsl(var(--background) / 0.8),
+          hsl(var(--background) / 0.9)
+        );
+        min-height: 100vh;
+        backdrop-filter: blur(100px);
       }
 
-      /* Animations */
+      /* Enhanced Animations */
       @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(20px);
+          transform: translateY(30px);
         }
         to {
           opacity: 1;
@@ -75,63 +158,300 @@
         }
       }
 
-      /* Smooth transitions for interactive elements */
-      button, a {
-        transition: all 0.3s ease;
+      @keyframes pulse {
+        0%, 100% {
+          opacity: 0.5;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.05);
+        }
       }
 
-      /* Loading animation */
-      .loading {
-        position: fixed;
+      /* Enhanced Animation Keyframes */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+
+      @keyframes glow {
+        0%, 100% { 
+          filter: brightness(1) blur(120px);
+          opacity: 0.5;
+        }
+        50% { 
+          filter: brightness(1.5) blur(100px);
+          opacity: 0.8;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Animation Utilities */
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .animate-glow {
+        animation: glow 4s ease-in-out infinite;
+      }
+
+      .animate-shimmer {
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(153, 69, 255, 0.1) 50%,
+          transparent 100%
+        );
+        background-size: 1000px 100%;
+        animation: shimmer 2s linear infinite;
+      }
+
+      .animate-scale-in {
+        animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .animate-slide-in-right {
+        animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Animation Delays */
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+      .delay-300 { animation-delay: 300ms; }
+      .delay-400 { animation-delay: 400ms; }
+      .delay-500 { animation-delay: 500ms; }
+
+      /* Enhanced Interactive Elements */
+      button, a {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      button:hover, a:hover {
+        transform: translateY(-2px);
+      }
+
+      button:active, a:active {
+        transform: translateY(0);
+      }
+
+      button::after, a::after {
+        content: '';
+        position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background: #fff;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transform: translateX(-100%);
+      }
+
+      button:hover::after, a:hover::after {
+        transform: translateX(100%);
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Enhanced Gradient Orbs */
+      .gradient-orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.5;
+        mix-blend-mode: soft-light;
+        animation: glow 6s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      .gradient-orb.primary {
+        background: radial-gradient(circle, rgba(153, 69, 255, 0.4), transparent 70%);
+      }
+
+      .gradient-orb.secondary {
+        background: radial-gradient(circle, rgba(20, 241, 149, 0.2), transparent 70%);
+      }
+
+      /* Smooth Scroll Behavior */
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      /* Section Positioning */
+      section {
+        position: relative;
+        width: 100%;
+      }
+
+      section[id] {
+        scroll-margin-top: 80px;
+      }
+
+      /* Enhanced Button Styles */
+      button {
+        -webkit-tap-highlight-color: transparent;
+        outline: none !important;
+        user-select: none;
+      }
+
+      button:focus-visible {
+        outline: 2px solid hsl(var(--primary));
+        outline-offset: 2px;
+      }
+
+      button:active {
+        transform: translateY(1px) !important;
+      }
+
+      /* Fix for mobile touch events */
+      @media (hover: none) {
+        button:hover {
+          transform: none !important;
+        }
+        
+        button::after {
+          display: none;
+        }
+      }
+
+      /* Fix for root positioning */
+      #root {
+        position: relative !important;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Enhanced Loading State */
+      .loading {
+        position: fixed;
+        inset: 0;
+        background: hsl(var(--background));
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        animation: fadeOut 0.5s ease-out forwards;
-        animation-delay: 0.5s;
       }
 
-      .loader {
-        width: 48px;
-        height: 48px;
-        border: 5px solid #f3f3f3;
-        border-top: 5px solid #3498db;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
+      .loading.fade-out {
+        animation: fadeOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
 
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+      /* Enhanced Card Hover Effects */
+      .hover-card {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      @keyframes fadeOut {
-        to {
-          opacity: 0;
-          visibility: hidden;
-        }
+      .hover-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
       }
 
-      /* Responsive styles */
-      @media (max-width: 600px) {
-        #root {
-          padding: 10px;
-        }
+      /* Text Gradient Animation */
+      .animate-gradient-text {
+        background: linear-gradient(
+          90deg,
+          #9945FF,
+          #14F195,
+          #9945FF
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: gradient 8s linear infinite;
       }
 
-      /* Performance optimizations */
+      @keyframes gradient {
+        0% { background-position: 0% center; }
+        100% { background-position: 200% center; }
+      }
+
+      /* Performance and visual improvements */
       img {
         content-visibility: auto;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
       }
 
-      /* Reduce layout shifts */
+      img:hover {
+        transform: scale(1.02);
+      }
+
+      /* Reduce layout shifts and improve spacing */
       .content {
         min-height: 100vh;
+        margin: 0 auto;
+        max-width: 1440px;
+        padding: 0 24px;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Scrollbar styling */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: linear-gradient(
+          to bottom,
+          hsl(var(--background)),
+          hsl(var(--muted))
+        );
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #9945FF;
+        border-radius: 4px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #7c37cc;
+      }
+
+      /* Gradient text effect */
+      .gradient-text {
+        background: linear-gradient(to right, #9945FF, #14F195);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
     </style>
   </head>
@@ -148,16 +468,42 @@
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer crossorigin="anonymous"></script>
     <script type="module" src="/src/main.tsx" defer crossorigin="anonymous"></script>
 
-    <!-- Performance monitoring -->
+    <!-- Enhanced Performance monitoring and loading handling -->
     <script>
-      // Report Web Vitals
+      document.addEventListener('DOMContentLoaded', () => {
+        // Add fade-out class to loading screen once content is loaded
+        const loadingScreen = document.querySelector('.loading');
+        if (loadingScreen) {
+          loadingScreen.classList.add('fade-out');
+        }
+
+        // Remove loading screen after animation
+        setTimeout(() => {
+          if (loadingScreen) {
+            loadingScreen.style.display = 'none';
+          }
+          document.body.style.overflow = 'auto';
+        }, 800);
+
+        // Report Web Vitals
+        if (window.performance) {
+          const observer = new PerformanceObserver((list) => {
+            list.getEntries().forEach((entry) => {
+              if (entry.entryType === 'largest-contentful-paint') {
+                console.log(`LCP: ${entry.startTime}ms`);
+              }
+            });
+          });
+          observer.observe({ entryTypes: ['largest-contentful-paint'] });
+        }
+      });
+
       window.addEventListener('load', () => {
         if (window.performance && window.performance.timing) {
           const timing = window.performance.timing;
           const loadTime = timing.loadEventEnd - timing.navigationStart;
           console.log(`Page load time: ${loadTime}ms`);
         } else {
-          // Fallback for modern browsers that use Performance API
           const perfData = window.performance.getEntriesByType('navigation')[0];
           if (perfData) {
             console.log(`Page load time: ${perfData.loadEventEnd}ms`);
