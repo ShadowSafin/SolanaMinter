@@ -1,6 +1,6 @@
 import { ArrowRightIcon, Check, Coins, LockIcon, PackageOpen, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import FeatureCard from "@/components/FeatureCard";
+import { FeatureCard } from "@/components/FeatureCard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CoinCreator from "@/components/CoinCreator";
