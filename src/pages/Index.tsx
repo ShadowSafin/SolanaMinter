@@ -46,32 +46,22 @@ export default function Index() {
               <div className="flex flex-col sm:flex-row gap-6 justify-center animate-scale-in delay-400">
                 <Button 
                   size="lg" 
-                  className="relative overflow-hidden group bg-gradient-to-r from-solana to-solana-dark hover:opacity-100 transition-all duration-300 rounded-full text-lg px-8 py-6 shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1"
-                  onClick={() => {
-                    const element = document.getElementById('create-coin');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  className="group relative overflow-hidden bg-gradient-to-r from-solana to-solana-dark hover:opacity-90 transition-all duration-300 rounded-full text-lg px-8 py-6 shadow-lg hover:shadow-xl hover:scale-105 transform backdrop-blur-sm"
+                  onClick={() => window.location.href = "#create-coin"}
                 >
-                  <span className="relative z-10 flex items-center justify-center">
-                    Create Your Coin <ArrowRightIcon className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  <span className="relative z-10 flex items-center">
+                    Create Your Coin
+                    <ArrowRightIcon className="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-solana via-purple-500 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="relative overflow-hidden rounded-full text-lg px-8 py-6 hover:bg-card/50 transition-all duration-300 backdrop-blur-sm border-border/40 hover:border-border group"
-                  onClick={() => {
-                    const element = document.getElementById('features');
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  className="rounded-full text-lg px-8 py-6 hover:bg-card/50 transition-all duration-300 backdrop-blur-sm border-border/40 hover:border-border"
+                  onClick={() => window.location.href = "#features"}
                 >
-                  <span className="relative z-10">Learn More</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-border/10 to-border/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  Learn More
                 </Button>
               </div>
             </div>
