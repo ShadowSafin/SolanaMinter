@@ -45,45 +45,59 @@
     </script>
 
     <style>
-      /* Initial page state */
+      /* High-performance base styles */
       html, body {
         margin: 0;
         padding: 0;
         background: hsl(var(--background));
         min-height: 100vh;
         overflow-x: hidden;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
       body {
         font-family: system-ui, -apple-system, sans-serif;
         scroll-behavior: smooth;
         opacity: 0;
-        animation: fadeIn 0.3s ease-out forwards;
+        animation: fadeIn 0.1s ease-out forwards;
+        will-change: opacity;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
+      /* High-performance animations */
       @keyframes fadeIn {
-        to {
-          opacity: 1;
-        }
+        to { opacity: 1; }
       }
 
       #root {
-        position: fixed;
-        inset: 0;
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: 0.2s;
-        background: linear-gradient(
-          135deg,
-          hsl(var(--background)),
-          hsl(var(--background))
-        );
+        position: relative !important;
         min-height: 100vh;
-        backdrop-filter: blur(100px);
+        display: flex;
+        flex-direction: column;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        perspective: 1000px;
+        -webkit-perspective: 1000px;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
-      /* Enhanced Loading animation */
+      /* Optimized loading animation */
       .loading {
         position: fixed;
         inset: 0;
@@ -92,38 +106,36 @@
         justify-content: center;
         align-items: center;
         z-index: 9999;
-      }
-
-      .loading.fade-out {
-        animation: fadeOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        will-change: opacity;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
       .loader {
-        width: 48px;
-        height: 48px;
+        width: 24px;
+        height: 24px;
         border-radius: 50%;
         position: relative;
         background: conic-gradient(from 0deg, transparent 0%, #9945FF 100%);
         mask: radial-gradient(circle at center, transparent 55%, white 55%);
         -webkit-mask: radial-gradient(circle at center, transparent 55%, white 55%);
-        animation: rotate 1s linear infinite;
+        animation: rotate 0.6s linear infinite;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
+      /* High-performance animations */
       @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      @keyframes fadeOut {
-        from {
-          opacity: 1;
-          transform: scale(1);
-        }
-        to {
-          opacity: 0;
-          transform: scale(1.1);
-          visibility: hidden;
-        }
+        to { transform: rotate(360deg) translate3d(0, 0, 0); }
       }
 
       /* Performance optimizations */
@@ -131,290 +143,103 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
-      #root {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        background: linear-gradient(
-          135deg,
-          hsl(var(--background) / 0.8),
-          hsl(var(--background) / 0.9)
-        );
-        min-height: 100vh;
-        backdrop-filter: blur(100px);
-      }
-
-      /* Enhanced Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes pulse {
-        0%, 100% {
-          opacity: 0.5;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.7;
-          transform: scale(1.05);
-        }
-      }
-
-      /* Enhanced Animation Keyframes */
+      /* High-performance animations */
       @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
+        0%, 100% { transform: translate3d(0, 0, 0); }
+        50% { transform: translate3d(0, -5px, 0); }
       }
 
       @keyframes glow {
         0%, 100% { 
-          filter: brightness(1) blur(120px);
+          filter: brightness(1) blur(10px);
           opacity: 0.5;
         }
         50% { 
-          filter: brightness(1.5) blur(100px);
-          opacity: 0.8;
+          filter: brightness(1.1) blur(8px);
+          opacity: 0.6;
         }
       }
 
-      @keyframes shimmer {
-        0% {
-          background-position: -1000px 0;
-        }
-        100% {
-          background-position: 1000px 0;
-        }
-      }
-
-      @keyframes scaleIn {
-        from {
-          transform: scale(0.8);
-          opacity: 0;
-        }
-        to {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideInRight {
-        from {
-          transform: translateX(100px);
-          opacity: 0;
-        }
-        to {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      /* Animation Utilities */
+      /* Optimized animations */
       .animate-float {
-        animation: float 6s ease-in-out infinite;
+        animation: float 4s ease-in-out infinite;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
       .animate-glow {
-        animation: glow 4s ease-in-out infinite;
+        animation: glow 3s ease-in-out infinite;
+        will-change: filter, opacity;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
-      .animate-shimmer {
-        background: linear-gradient(
-          90deg,
-          transparent 0%,
-          rgba(153, 69, 255, 0.1) 50%,
-          transparent 100%
-        );
-        background-size: 1000px 100%;
-        animation: shimmer 2s linear infinite;
-      }
-
-      .animate-scale-in {
-        animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-
-      .animate-slide-in-right {
-        animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-
-      /* Animation Delays */
-      .delay-100 { animation-delay: 100ms; }
-      .delay-200 { animation-delay: 200ms; }
-      .delay-300 { animation-delay: 300ms; }
-      .delay-400 { animation-delay: 400ms; }
-      .delay-500 { animation-delay: 500ms; }
-
-      /* Enhanced Interactive Elements */
-      button, a {
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      button:hover, a:hover {
-        transform: translateY(-2px);
-      }
-
-      button:active, a:active {
-        transform: translateY(0);
-      }
-
-      button::after, a::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.1),
-          transparent
-        );
-        transform: translateX(-100%);
-      }
-
-      button:hover::after, a:hover::after {
-        transform: translateX(100%);
-        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      /* Enhanced Gradient Orbs */
+      /* High-performance gradient orbs */
       .gradient-orb {
         position: absolute;
         border-radius: 50%;
-        filter: blur(120px);
+        filter: blur(10px);
         opacity: 0.5;
         mix-blend-mode: soft-light;
-        animation: glow 6s ease-in-out infinite;
+        animation: glow 4s ease-in-out infinite;
         pointer-events: none;
+        will-change: filter, opacity;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
-      .gradient-orb.primary {
-        background: radial-gradient(circle, rgba(153, 69, 255, 0.4), transparent 70%);
-      }
-
-      .gradient-orb.secondary {
-        background: radial-gradient(circle, rgba(20, 241, 149, 0.2), transparent 70%);
-      }
-
-      /* Smooth Scroll Behavior */
-      html {
-        scroll-behavior: smooth;
-        scroll-padding-top: 80px;
-      }
-
-      /* Section Positioning */
-      section {
+      /* High-performance transitions */
+      button, a {
+        transition: transform 0.1s ease-out;
         position: relative;
-        width: 100%;
+        overflow: hidden;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
-      section[id] {
-        scroll-margin-top: 80px;
-      }
-
-      /* Enhanced Button Styles */
-      button {
-        -webkit-tap-highlight-color: transparent;
-        outline: none !important;
-        user-select: none;
-      }
-
-      button:focus-visible {
-        outline: 2px solid hsl(var(--primary));
-        outline-offset: 2px;
-      }
-
-      button:active {
-        transform: translateY(1px) !important;
-      }
-
-      /* Fix for mobile touch events */
-      @media (hover: none) {
-        button:hover {
-          transform: none !important;
-        }
-        
-        button::after {
-          display: none;
-        }
-      }
-
-      /* Fix for root positioning */
-      #root {
-        position: relative !important;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Enhanced Loading State */
-      .loading {
-        position: fixed;
-        inset: 0;
-        background: hsl(var(--background));
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-      }
-
-      .loading.fade-out {
-        animation: fadeOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-
-      /* Enhanced Card Hover Effects */
-      .hover-card {
-        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      }
-
-      .hover-card:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 20px 40px -20px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Text Gradient Animation */
-      .animate-gradient-text {
-        background: linear-gradient(
-          90deg,
-          #9945FF,
-          #14F195,
-          #9945FF
-        );
-        background-size: 200% auto;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: gradient 8s linear infinite;
-      }
-
-      @keyframes gradient {
-        0% { background-position: 0% center; }
-        100% { background-position: 200% center; }
-      }
-
-      /* Performance and visual improvements */
+      /* High-performance image loading */
       img {
         content-visibility: auto;
         border-radius: 8px;
-        transition: transform 0.3s ease;
+        transition: transform 0.1s ease-out;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
-      img:hover {
-        transform: scale(1.02);
-      }
-
-      /* Reduce layout shifts and improve spacing */
+      /* High-performance content layout */
       .content {
         min-height: 100vh;
         margin: 0 auto;
@@ -422,36 +247,66 @@
         padding: 0 24px;
         position: relative;
         z-index: 1;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
-      /* Scrollbar styling */
-      ::-webkit-scrollbar {
-        width: 8px;
+      /* High-performance card hover effects */
+      .hover-card {
+        transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+        will-change: transform, box-shadow;
+        transform: translate3d(0, 0, 0);
+        -webkit-transform: translate3d(0, 0, 0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        contain: layout style paint;
+        isolation: isolate;
       }
 
-      ::-webkit-scrollbar-track {
-        background: linear-gradient(
-          to bottom,
-          hsl(var(--background)),
-          hsl(var(--muted))
-        );
+      /* High-performance animations */
+      @keyframes fadeInUp {
+        to {
+          opacity: 1;
+          transform: translate3d(0, 0, 0);
+        }
       }
 
-      ::-webkit-scrollbar-thumb {
-        background: #9945FF;
-        border-radius: 4px;
+      /* Performance optimizations for reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
       }
 
-      ::-webkit-scrollbar-thumb:hover {
-        background: #7c37cc;
+      /* High-performance mobile optimizations */
+      @media (max-width: 768px) {
+        .animate-float,
+        .animate-glow,
+        .gradient-orb {
+          animation: none;
+        }
+        
+        .gradient-orb {
+          filter: blur(5px);
+        }
       }
 
-      /* Gradient text effect */
-      .gradient-text {
-        background: linear-gradient(to right, #9945FF, #14F195);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
+      /* Maximum performance for low-end devices */
+      @media (max-width: 480px) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+        
+        .gradient-orb {
+          display: none;
+        }
       }
     </style>
   </head>
@@ -465,51 +320,172 @@
     <div id="root"></div>
 
     <!-- Optimized script loading with crossorigin attribute -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer crossorigin="anonymous"></script>
-    <script type="module" src="/src/main.tsx" defer crossorigin="anonymous"></script>
+    <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer crossorigin="anonymous" fetchpriority="high"></script>
+    <script type="module" src="/src/main.tsx" defer crossorigin="anonymous" fetchpriority="high"></script>
 
-    <!-- Enhanced Performance monitoring and loading handling -->
+    <!-- Optimized Performance monitoring and loading handling -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // Add fade-out class to loading screen once content is loaded
-        const loadingScreen = document.querySelector('.loading');
-        if (loadingScreen) {
-          loadingScreen.classList.add('fade-out');
-        }
+      // High-performance debounce using requestAnimationFrame
+      const debounce = (func, wait) => {
+        let timeout;
+        return (...args) => {
+          cancelAnimationFrame(timeout);
+          timeout = requestAnimationFrame(() => {
+            clearTimeout(timeout);
+            func(...args);
+          });
+        };
+      };
 
-        // Remove loading screen after animation
-        setTimeout(() => {
-          if (loadingScreen) {
-            loadingScreen.style.display = 'none';
+      // High-performance throttle using requestAnimationFrame
+      const throttle = (func, limit) => {
+        let inThrottle;
+        return (...args) => {
+          if (!inThrottle) {
+            requestAnimationFrame(() => {
+              func(...args);
+              inThrottle = true;
+              setTimeout(() => inThrottle = false, limit);
+            });
           }
-          document.body.style.overflow = 'auto';
-        }, 800);
+        };
+      };
 
-        // Report Web Vitals
+      // High-performance monitoring
+      const performanceMonitor = debounce(() => {
         if (window.performance) {
           const observer = new PerformanceObserver((list) => {
-            list.getEntries().forEach((entry) => {
-              if (entry.entryType === 'largest-contentful-paint') {
-                console.log(`LCP: ${entry.startTime}ms`);
-              }
+            requestAnimationFrame(() => {
+              list.getEntries().forEach((entry) => {
+                if (entry.entryType === 'largest-contentful-paint') {
+                  console.log(`LCP: ${entry.startTime}ms`);
+                }
+              });
             });
           });
           observer.observe({ entryTypes: ['largest-contentful-paint'] });
         }
-      });
+      }, 1000);
 
-      window.addEventListener('load', () => {
-        if (window.performance && window.performance.timing) {
-          const timing = window.performance.timing;
-          const loadTime = timing.loadEventEnd - timing.navigationStart;
-          console.log(`Page load time: ${loadTime}ms`);
+      // Schedule tasks using requestAnimationFrame
+      const scheduleTask = (task) => {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(() => {
+            requestAnimationFrame(task);
+          }, { timeout: 1000 });
         } else {
-          const perfData = window.performance.getEntriesByType('navigation')[0];
-          if (perfData) {
-            console.log(`Page load time: ${perfData.loadEventEnd}ms`);
-          }
+          requestAnimationFrame(() => {
+            setTimeout(task, 0);
+          });
         }
-      });
+      };
+
+      scheduleTask(performanceMonitor);
+
+      // High-performance loading screen handling
+      const handleLoadingScreen = debounce(() => {
+        const loadingScreen = document.querySelector('.loading');
+        if (loadingScreen) {
+          requestAnimationFrame(() => {
+            loadingScreen.style.opacity = '0';
+            requestAnimationFrame(() => {
+              loadingScreen.style.display = 'none';
+              document.body.style.overflow = 'auto';
+            });
+          });
+        }
+      }, 0);
+
+      document.addEventListener('DOMContentLoaded', handleLoadingScreen);
+
+      // High-performance page load measurement
+      const measureLoadTime = debounce(() => {
+        requestAnimationFrame(() => {
+          if (window.performance && window.performance.timing) {
+            const timing = window.performance.timing;
+            const loadTime = timing.loadEventEnd - timing.navigationStart;
+            console.log(`Page load time: ${loadTime}ms`);
+          } else if (window.performance) {
+            const perfData = window.performance.getEntriesByType('navigation')[0];
+            if (perfData) {
+              console.log(`Page load time: ${perfData.loadEventEnd}ms`);
+            }
+          }
+        });
+      }, 1000);
+
+      window.addEventListener('load', measureLoadTime);
+
+      // High-performance scroll handling
+      let lastScrollY = window.scrollY;
+      let ticking = false;
+
+      const handleScroll = () => {
+        lastScrollY = window.scrollY;
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            // Handle scroll events here
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      // High-performance resize handling
+      let lastWidth = window.innerWidth;
+      let lastHeight = window.innerHeight;
+      let resizeTimeout;
+
+      const handleResize = () => {
+        if (window.innerWidth !== lastWidth || window.innerHeight !== lastHeight) {
+          lastWidth = window.innerWidth;
+          lastHeight = window.innerHeight;
+          requestAnimationFrame(() => {
+            // Handle resize events here
+          });
+        }
+      };
+
+      window.addEventListener('resize', handleResize, { passive: true });
+
+      // High-performance cleanup
+      const cleanup = () => {
+        cancelAnimationFrame(resizeTimeout);
+        window.removeEventListener('scroll', handleScroll);
+        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('load', measureLoadTime);
+        document.removeEventListener('DOMContentLoaded', handleLoadingScreen);
+      };
+
+      window.addEventListener('unload', cleanup);
+      window.addEventListener('beforeunload', cleanup);
+
+      // High-performance memory optimization
+      const optimizeMemory = () => {
+        requestAnimationFrame(() => {
+          if (window.performance && window.performance.memory) {
+            const memory = window.performance.memory;
+            if (memory.usedJSHeapSize > memory.jsHeapSizeLimit * 0.8) {
+              console.log('High memory usage detected, optimizing...');
+              if (window.gc) {
+                window.gc();
+              }
+            }
+          }
+        });
+      };
+
+      // Monitor memory usage with requestAnimationFrame
+      const monitorMemory = () => {
+        requestAnimationFrame(() => {
+          optimizeMemory();
+          setTimeout(monitorMemory, 30000);
+        });
+      };
+
+      monitorMemory();
     </script>
   </body>
 </html>
