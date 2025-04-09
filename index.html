@@ -16,31 +16,28 @@
     <link rel="preload" href="https://cdn.gpteng.co/gptengineer.js" as="script" crossorigin="anonymous" />
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="SolanaMinter - Create and Mint Your Own Meme Tokens" />
-    <meta property="og:description" content="Join SolanaMinter to create and mint your own meme tokens on the Solana blockchain." />
+    <meta property="og:title" content="SolanaMinter - Create Your Own Meme Tokens" />
+    <meta property="og:description" content="Create and mint your own meme tokens on Solana in minutes. No coding required!" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image" content="https://yourdomain.com/og-image.png" />
     <meta property="og:url" content="https://yourdomain.com" />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="SolanaMinter - Create and Mint Your Own Meme Tokens" />
-    <meta name="twitter:description" content="Join SolanaMinter to create and mint your own meme tokens on the Solana blockchain." />
-    <meta name="twitter:image" content="/og-image.png" />
+    <meta name="twitter:title" content="SolanaMinter - Create Your Own Meme Tokens" />
+    <meta name="twitter:description" content="Create and mint your own meme tokens on Solana in minutes. No coding required!" />
+    <meta name="twitter:image" content="https://yourdomain.com/og-image.png" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "WebSite",
+        "@type": "WebApplication",
         "name": "SolanaMinter",
+        "description": "Create and mint your own meme tokens on the Solana blockchain",
         "url": "https://yourdomain.com",
-        "description": "Create and mint your own meme tokens on Solana.",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://yourdomain.com/search?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+        "applicationCategory": "BlockchainApplication",
+        "operatingSystem": "Web"
       }
     </script>
 
@@ -59,6 +56,8 @@
         scroll-behavior: smooth;
         opacity: 0;
         animation: fadeIn 0.3s ease-out forwards;
+        overflow-x: hidden;
+        min-height: 100vh;
       }
 
       @keyframes fadeIn {
@@ -68,8 +67,8 @@
       }
 
       #root {
-        position: fixed;
-        inset: 0;
+        position: relative;
+        min-height: 100vh;
         opacity: 0;
         transform: translateY(20px);
         animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -79,9 +78,9 @@
           hsl(var(--background)),
           hsl(var(--background))
         );
-        min-height: 100vh;
         -webkit-backdrop-filter: blur(100px);
                 backdrop-filter: blur(100px);
+        overflow-x: hidden;
       }
 
       /* Enhanced Loading animation */
@@ -132,20 +131,6 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-      }
-
-      #root {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        background: linear-gradient(
-          135deg,
-          hsl(var(--background) / 0.8),
-          hsl(var(--background) / 0.9)
-        );
-        min-height: 100vh;
-        -webkit-backdrop-filter: blur(100px);
-                backdrop-filter: blur(100px);
       }
 
       /* Enhanced Animations */
@@ -315,68 +300,6 @@
         scroll-padding-top: 80px;
       }
 
-      /* Section Positioning */
-      section {
-        position: relative;
-        width: 100%;
-      }
-
-      section[id] {
-        scroll-margin-top: 80px;
-      }
-
-      /* Enhanced Button Styles */
-      button {
-        -webkit-tap-highlight-color: transparent;
-        outline: none !important;
-        -webkit-user-select: none;
-           -moz-user-select: none;
-                user-select: none;
-      }
-
-      button:focus-visible {
-        outline: 2px solid hsl(var(--primary));
-        outline-offset: 2px;
-      }
-
-      button:active {
-        transform: translateY(1px) !important;
-      }
-
-      /* Fix for mobile touch events */
-      @media (hover: none) {
-        button:hover {
-          transform: none !important;
-        }
-        
-        button::after {
-          display: none;
-        }
-      }
-
-      /* Fix for root positioning */
-      #root {
-        position: relative !important;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* Enhanced Loading State */
-      .loading {
-        position: fixed;
-        inset: 0;
-        background: hsl(var(--background));
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-      }
-
-      .loading.fade-out {
-        animation: fadeOut 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      }
-
       /* Enhanced Card Hover Effects */
       .hover-card {
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -458,8 +381,8 @@
         color: transparent;
       }
     </style>
-    <script type="module" crossorigin src="/assets/index-CNut3Izi.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CW5ppEAT.css">
+    <script type="module" crossorigin src="/assets/index-Ce4UktD4.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-D2Jf5k6F.css">
   </head>
 
   <body>
@@ -470,13 +393,14 @@
 
     <div id="root"></div>
 
-    <!-- Optimized script loading with crossorigin attribute -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module" defer crossorigin="anonymous"></script>
+    <!-- Script loading with proper order and attributes -->
+    <script type="module" src="https://cdn.gpteng.co/gptengineer.js" defer crossorigin="anonymous"></script>
 
-    <!-- Enhanced Performance monitoring and loading handling -->
+    <!-- Enhanced loading handling -->
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // Add fade-out class to loading screen once content is loaded
+      // Wait for all resources to load
+      window.addEventListener('load', () => {
+        // Add fade-out class to loading screen
         const loadingScreen = document.querySelector('.loading');
         if (loadingScreen) {
           loadingScreen.classList.add('fade-out');
@@ -503,18 +427,17 @@
         }
       });
 
-      window.addEventListener('load', () => {
-        if (window.performance && window.performance.timing) {
-          const timing = window.performance.timing;
-          const loadTime = timing.loadEventEnd - timing.navigationStart;
-          console.log(`Page load time: ${loadTime}ms`);
-        } else {
-          const perfData = window.performance.getEntriesByType('navigation')[0];
-          if (perfData) {
-            console.log(`Page load time: ${perfData.loadEventEnd}ms`);
+      // Handle script loading errors
+      window.addEventListener('error', (event) => {
+        if (event.target.tagName === 'SCRIPT') {
+          console.error('Script loading error:', event);
+          // Remove loading screen if there's an error
+          const loadingScreen = document.querySelector('.loading');
+          if (loadingScreen) {
+            loadingScreen.style.display = 'none';
           }
         }
-      });
+      }, true);
     </script>
   </body>
 </html>
