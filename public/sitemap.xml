@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0"
+        xmlns:pagemap="http://www.google.com/schemas/sitemap-pagemap/1.0"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://solanaminter.fun</loc>
-    <lastmod>2024-04-08</lastmod>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://solanaminter.fun/logo.png</image:loc>
-      <image:title>SolanaMinter Logo</image:title>
-      <image:caption>SolanaMinter - Create and Mint Meme Tokens on Solana</image:caption>
+      <image:title>Create Solana Memecoin - Fast & Easy Token Creator</image:title>
+      <image:caption>Create and mint your own Solana memecoin in minutes! The easiest way to create Solana tokens and meme coins. No coding required. Fast, secure, and user-friendly platform for creating Solana memecoins.</image:caption>
     </image:image>
+    <pagemap:dataobject type="metatags">
+      <pagemap:attribute name="title" value="Create Solana Memecoin - Fast & Easy Solana Token Creator - SolanaMinter.fun"/>
+      <pagemap:attribute name="description" value="Create and mint your own Solana memecoin in minutes! The easiest way to create Solana tokens and meme coins. No coding required. Fast, secure, and user-friendly platform for creating Solana memecoins."/>
+      <pagemap:attribute name="keywords" value="create solana memecoin, solana token creator, create solana token, solana meme coin creator, create memecoin, mint solana token, solana token minting, solana meme token, create solana meme coin, solana token generator, solana coin creator, solana token maker, create token on solana, solana token creation, solana token platform, solana token mint, blockchain application, web application, token creation platform, meme coin platform, solana blockchain, solana development, solana ecosystem, solana token tools, solana token services, solana token solutions, solana token development, solana token deployment, solana token management, solana token platform, solana token marketplace, solana token launch, solana token minting, solana token generator, solana token builder, solana token creator tool"/>
+    </pagemap:dataobject>
   </url>
 </urlset>
